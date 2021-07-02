@@ -1,6 +1,6 @@
 # calc
 
-A simple yet exciting calculator app made suing flutter . implemented using GridView .
+A simple yet exciting calculator app made using flutter . implemented using GridView .
 Still in progress ....
 
 ## Getting Started
