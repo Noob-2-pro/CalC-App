@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'button.dart';
+import 'package:math_expressions/math_expressions.dart';
+import 'dart:io';
 
 void main() {
   runApp(CalC());
@@ -23,7 +25,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  List text = [0, '00', '.', '=', 1, 2, 3, '+', 4, 5, 6, '-', 7, 8, 9, 'x', 'C', '%', '⌫', '÷'];
+  List text = [0, '00', '.', '=', 1, 2, 3, '+', 4, 5, 6, '-', 7, 8, 9, '*', 'C', '%', '⌫', '/'];
   List<Color> textColor = [
     Colors.black,
     Colors.black,
@@ -51,7 +53,9 @@ class _MainPageState extends State<MainPage> {
   String _value = '';
 
   backspace() {
-    print('ok');
+    setState(() {
+      _value = _value.substring(0, _value.length - 1);
+    });
   }
 
   allClear() {
@@ -59,8 +63,6 @@ class _MainPageState extends State<MainPage> {
       _history = '';
       _value = '';
     });
-
-    print('cleared');
   }
 
   action(int int) {
@@ -72,6 +74,19 @@ class _MainPageState extends State<MainPage> {
   }
 
   evaluate() {
+    Parser p = Parser();
+    Expression exp = p.parse(_value);
+    ContextModel cm = ContextModel();
+
+    setState(() {
+      _history = _value;
+      try {
+        _value = exp.evaluate(EvaluationType.REAL, cm).toString();
+      } catch (e) {
+        _value = 'Error';
+      }
+    });
+
     print('okev');
   }
 
