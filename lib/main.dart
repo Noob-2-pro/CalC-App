@@ -46,24 +46,70 @@ class _MainPageState extends State<MainPage> {
     Colors.black,
     Color(0xFF35d5d2)
   ];
+  List<Function> callbacks = [];
+  String _history = '';
+  String _value = '';
+
+  backspace() {
+    print('ok');
+  }
+
+  allClear() {
+    setState(() {
+      _history = '';
+      _value = '';
+    });
+
+    print('cleared');
+  }
+
+  action(int int) {
+    setState(() {
+      _value += text[int].toString();
+    });
+
+    print(_value);
+  }
+
+  evaluate() {
+    print('okev');
+  }
+
+  callback(int int) {
+    if (int == 3) {
+      return evaluate();
+    } else if (int == 16) {
+      allClear();
+    } else if (int == 18) {
+      backspace();
+    } else {
+      return action(int);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-      Padding(
-          padding: EdgeInsets.only(right: 20, bottom: 20),
-          child: Align(
-            alignment: Alignment.centerRight,
+      Align(
+        alignment: Alignment.centerRight,
+        child: SingleChildScrollView(
+          reverse: true,
+          scrollDirection: Axis.horizontal,
+          child: Padding(
+            padding: EdgeInsets.only(right: 20, bottom: 20),
             child: Text(
-              '123',
+              _value,
               style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
             ),
-          )),
+          ),
+        ),
+      ),
       Padding(
           padding: EdgeInsets.only(right: 20),
           child: Align(
             alignment: Alignment.centerRight,
             child: Text(
-              '123',
+              _history,
               style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold, color: Colors.black45),
             ),
           )),
@@ -76,9 +122,11 @@ class _MainPageState extends State<MainPage> {
         itemCount: 20,
         itemBuilder: (context, int) {
           return Button(
-            text: text[int].toString(),
-            textColor: textColor[int],
-          );
+              text: text[int].toString(),
+              textColor: textColor[int],
+              callback: () {
+                callback(int);
+              });
         },
       ),
     ]);
