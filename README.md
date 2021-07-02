@@ -1,6 +1,7 @@
 # calc
 
-A new Flutter project.
+A simple yet exciting calculator app made suing flutter . implemented using GridView .
+Still in progress ....
 
 ## Getting Started
 
