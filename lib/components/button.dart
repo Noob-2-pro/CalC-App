@@ -4,7 +4,8 @@ class Button extends StatelessWidget {
   final String text;
   final Color textColor;
   final Function callback;
-  Button({this.text, this.textColor, this.callback});
+  final double textSize;
+  Button({this.text, this.textColor, this.callback, this.textSize});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class Button extends StatelessWidget {
             child: Text(
           text,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 45, color: textColor, fontWeight: FontWeight.w300),
+          style: TextStyle(fontSize: textSize, color: textColor, fontWeight: FontWeight.w300),
         )),
         decoration: BoxDecoration(color: Color(0xFFe4f7f7)),
       ),
