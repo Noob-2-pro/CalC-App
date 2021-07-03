@@ -28,6 +28,8 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   List text = [0, '00', '.', '=', 1, 2, 3, '+', 4, 5, 6, '-', 7, 8, 9, '*', 'C', '%', '⌫', '/'];
+  List scientificText = ['sin', 'cos', 'tan', 'log', 'In', '(', ')', '^', '√', '!', 'π', 'e', 'INV', 'RAD', 'DEG'];
+
   List<Color> textColor = [
     Colors.black,
     Colors.black,
@@ -53,6 +55,7 @@ class _MainPageState extends State<MainPage> {
   List<Function> callbacks = [];
   String _history = '';
   String _value = '';
+  bool selected = false;
 
   backspace() {
     setState(() {
@@ -107,33 +110,73 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-      Align(
-        alignment: Alignment.centerRight,
-        child: SingleChildScrollView(
-          reverse: true,
-          scrollDirection: Axis.horizontal,
-          child: Padding(
-            padding: EdgeInsets.only(right: 20, bottom: 20),
-            child: Text(
-              _value,
-              style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+      Column(
+        children: [
+          SizedBox(
+            height: 100,
+          ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: SingleChildScrollView(
+              reverse: true,
+              scrollDirection: Axis.horizontal,
+              child: Padding(
+                padding: EdgeInsets.only(right: 20, bottom: 20),
+                child: Text(
+                  _value,
+                  style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+                ),
+              ),
             ),
           ),
+          Padding(
+              padding: EdgeInsets.only(right: 20),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  _history,
+                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold, color: Colors.black45),
+                ),
+              )),
+        ],
+      ),
+      SizedBox(height: 30),
+      Container(
+        width: double.infinity,
+        decoration: BoxDecoration(color: Color(0xFF32363a)),
+        child: GestureDetector(
+          child: GridView.builder(
+            shrinkWrap: true,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5, childAspectRatio: 2),
+            itemCount: 15,
+            itemBuilder: (context, int) {
+              return GestureDetector(
+                onTap: () {
+                  print(scientificText[int].toString());
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    scientificText[int].toString(),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w300),
+                  ),
+                ),
+              );
+            },
+          ),
+          onTap: () {},
         ),
       ),
-      Padding(
-          padding: EdgeInsets.only(right: 20),
-          child: Align(
-            alignment: Alignment.centerRight,
-            child: Text(
-              _history,
-              style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold, color: Colors.black45),
-            ),
-          )),
+      Container(
+        color: Color(0xFFe4f7f7),
+        width: double.infinity,
+        child: Icon(Icons.menu),
+      ),
       GridView.builder(
         padding: EdgeInsets.all(0),
         reverse: true,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4, childAspectRatio: 1.5),
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
         itemCount: 20,

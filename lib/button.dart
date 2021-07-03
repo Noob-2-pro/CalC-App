@@ -15,7 +15,7 @@ class Button extends StatelessWidget {
             child: Text(
           text,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 45, color: textColor),
+          style: TextStyle(fontSize: 45, color: textColor, fontWeight: FontWeight.w300),
         )),
         decoration: BoxDecoration(color: Color(0xFFe4f7f7)),
       ),
