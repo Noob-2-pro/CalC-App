@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'button.dart';
 import 'package:math_expressions/math_expressions.dart';
-import 'dart:io';
+import 'package:flutter/services.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(CalC());
 }
 
@@ -129,7 +131,7 @@ class _MainPageState extends State<MainPage> {
             ),
           )),
       GridView.builder(
-        padding: EdgeInsets.only(top: 25),
+        padding: EdgeInsets.all(0),
         reverse: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
         shrinkWrap: true,
