@@ -21,7 +21,7 @@ class BottomGrid extends StatelessWidget {
             textColor: ktextColor[int],
             textSize: selected ? 40 : 45,
             callback: () {
-              callback(int);
+              callback(int, kBottomGridText);
             });
       },
     );

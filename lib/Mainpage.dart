@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:calc/bottomgrid.dart';
-import 'Constants.dart';
 import 'UpperGrid.dart';
 
 class MainPage extends StatefulWidget {
@@ -42,15 +41,15 @@ class _MainPageState extends State<MainPage> {
     });
   }
 
-  void action(int int) {
+  void action(int int, List list) {
     setState(() {
-      _value += kBottomGridText[int].toString();
+      _value += list[int].toString();
     });
 
     print(_value);
   }
 
-  void callbacks(int int) {
+  void callbacks(int int, List list) {
     if (int == 3) {
       return evaluate();
     } else if (int == 16) {
@@ -58,7 +57,7 @@ class _MainPageState extends State<MainPage> {
     } else if (int == 18) {
       backspace();
     } else {
-      return action(int);
+      return action(int, list);
     }
   }
 
@@ -92,7 +91,10 @@ class _MainPageState extends State<MainPage> {
           ),
         ],
       ),
-      UpperGrid(selected: selected, callback: callbacks),
+      UpperGrid(
+        selected: selected,
+        actions: action,
+      ),
       Container(
         color: Color(0xFFe4f7f7),
         width: double.infinity,

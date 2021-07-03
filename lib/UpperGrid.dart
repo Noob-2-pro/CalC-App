@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import 'Constants.dart';
 
-class UpperGrid extends StatelessWidget {
+class UpperGrid extends StatefulWidget {
   final bool selected;
-  final Function callback;
-  UpperGrid({this.selected, this.callback});
+  final Function actions;
+  UpperGrid({this.selected, this.actions});
+
+  @override
+  _UpperGridState createState() => _UpperGridState();
+}
+
+class _UpperGridState extends State<UpperGrid> {
+  bool invselected = false;
   @override
   Widget build(BuildContext context) {
     return Container(
       // duration: Duration(seconds: 5),
       // curve: Curves.fastOutSlowIn,
       color: Color(0xFF32363a),
-      child: selected
+      child: widget.selected
           ? GridView.builder(
               padding: EdgeInsets.only(top: 10, bottom: 10),
               shrinkWrap: true,
@@ -21,11 +28,23 @@ class UpperGrid extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               itemBuilder: (context, int) {
                 return GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    if (int == 12) {
+                      print('12');
+                      setState(() {
+                        invselected = !invselected;
+                      });
+                    } else if (int == 13) {
+                      print('13');
+                    } else if (int == 14) {
+                      print('14');
+                    } else
+                      widget.actions(int, kUpperGridText);
+                  },
                   child: Container(
                     alignment: Alignment.center,
                     child: Text(
-                      kscientificGridText[int].toString(),
+                      invselected ? kUpperINVGridText[int].toString() : kUpperGridText[int].toString(),
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w300),
                     ),
