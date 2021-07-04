@@ -7,6 +7,7 @@ made using gridview builder and [math_expressions](https://pub.dev/packages/math
 - UI is complete and inspired from Realme UI calculator app.
 - All basic and most advanced calculator functions are working properly.
 
+
 ### Issues - 
 - exponentials, factorial ,ln are not working.
 - feature to work in Degree and Radian results is not implemented yet.
