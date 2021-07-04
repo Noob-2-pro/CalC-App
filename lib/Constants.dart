@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 List kBottomGridText = [0, '00', '.', '=', 1, 2, 3, '+', 4, 5, 6, '-', 7, 8, 9, '*', 'C', '%', '⌫', '/'];
-List kUpperGridText = ['sin', 'cos', 'tan', 'log', 'In', '(', ')', '^', '√', '!', 'π', 'e', 'INV', 'RAD', 'DEG'];
+List kUpperGridText = ['sin', 'cos', 'tan', 'log', 'In', '(', ')', '^', 'sqrt', ',', 'π', 'e', 'INV', 'RAD', 'DEG'];
 List kUpperINVGridText = [
   'sin⁻¹',
   'cos⁻¹',
@@ -11,7 +11,7 @@ List kUpperINVGridText = [
   '(',
   ')',
   '^',
-  'x²',
+  '²',
   '!',
   'π',
   'e',

@@ -28,7 +28,7 @@ class _MainPageState extends State<MainPage> {
 
   void evaluate() {
     Parser p = Parser();
-    Expression exp = p.parse(_value);
+    Expression exp = p.parse(valuemanipiutor());
     ContextModel cm = ContextModel();
 
     setState(() {
@@ -39,6 +39,33 @@ class _MainPageState extends State<MainPage> {
         _value = 'Error';
       }
     });
+  }
+
+  // ignore: missing_return
+  String valuemanipiutor() {
+    if (_value.contains('π')) {
+      String c = _value.replaceAll(RegExp(r'π'), '*3.14285714*');
+      print(c);
+      return c;
+    } else if (_value.contains('sin⁻¹')) {
+      String c = _value.replaceAll(RegExp(r'sin⁻¹'), 'arcsin');
+      print(c);
+      return c;
+    } else if (_value.contains('cos⁻¹')) {
+      String c = _value.replaceAll(RegExp(r'cos⁻¹'), 'arccos');
+      print(c);
+      return c;
+    } else if (_value.contains('tan⁻¹')) {
+      String c = _value.replaceAll(RegExp(r'tan⁻¹'), 'arctan');
+      print(c);
+      return c;
+    } else if (_value.contains('²')) {
+      String c = _value.replaceAll(RegExp(r'²'), '');
+      c = '$c*$c';
+      print(c);
+      return c;
+    } else
+      return _value;
   }
 
   void action(int int, List list) {
