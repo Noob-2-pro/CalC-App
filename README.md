@@ -1,7 +1,16 @@
-# calc
+# Cal-C APP
 
-A simple yet exciting calculator app made using flutter . implemented using GridView .
-Still in progress ....
+A simple yet exciting calculator app made using flutter with some more functionlities than basic calcutor apps.
+made using gridview builder and [math_expressions](https://pub.dev/packages/math_expressions) flutter package.
+
+###About :
+- UI is complete and inspired from Realme UI calculator app.
+- All basic calculator functions are working properly.
+
+###Issues - 
+- evaluating inverse functions , pi , exponentials ,10^ , x^2 are not working.
+- feature to display result in DEG and RAD results is not implements yet.
+
 
 ## Getting Started
 
