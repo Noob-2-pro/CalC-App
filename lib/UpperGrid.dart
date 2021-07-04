@@ -35,11 +35,11 @@ class _UpperGridState extends State<UpperGrid> {
                         invselected = !invselected;
                       });
                     } else if (int == 13) {
-                      print('13');
+                      throw 'it doesn\'t work yet';
                     } else if (int == 14) {
-                      print('14');
+                      throw 'it doesn\'t work yet';
                     } else
-                      widget.actions(int, kUpperGridText);
+                      widget.actions(int, invselected ? kUpperINVGridText : kUpperGridText);
                   },
                   child: Container(
                     alignment: Alignment.center,
