@@ -7,7 +7,7 @@ made using gridview builder and [math_expressions](https://pub.dev/packages/math
 - UI is complete and inspired from Realme UI calculator app.
 - All basic and most advanced calculator functions are working properly.
 
-![Simulator Screen Shot - iPhone 12 Pro Max - 2021-07-04 at 16 01 52](https://user-images.githubusercontent.com/61776980/124382475-45b45600-dce5-11eb-8a8d-82781a99e086.png)
+![SCreenshot- advanced calculator](https://user-images.githubusercontent.com/61776980/124382475-45b45600-dce5-11eb-8a8d-82781a99e086.png)with <img src="https://user-images.githubusercontent.com/61776980/124382475-45b45600-dce5-11eb-8a8d-82781a99e086.png" width="200" height="300">
 
 ### Issues - 
 - exponentials, factorial ,ln are not working.
