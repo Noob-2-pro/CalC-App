@@ -14,9 +14,11 @@ class _MainPageState extends State<MainPage> {
   bool selected = false;
 
   void backspace() {
-    setState(() {
-      _value = _value.substring(0, _value.length - 1);
-    });
+    if (_value.isNotEmpty) {
+      setState(() {
+        _value = _value.substring(0, _value.length - 1);
+      });
+    }
   }
 
   void allClear() {
@@ -27,11 +29,11 @@ class _MainPageState extends State<MainPage> {
   }
 
   void evaluate() {
-    Parser p = Parser();
-    Expression exp = p.parse(valuemanipiutor());
-    ContextModel cm = ContextModel();
-
-    setState(() {
+    try {
+      Parser p = Parser();
+      Expression exp = p.parse(valueManipulator());
+      ContextModel cm = ContextModel();
+       setState(() {
       _history = _value;
       try {
         _value = exp.evaluate(EvaluationType.REAL, cm).toString();
@@ -39,33 +41,32 @@ class _MainPageState extends State<MainPage> {
         _value = 'Error';
       }
     });
+    } on RangeError catch (e) {
+      print(e);
+    }
+
+   
   }
 
   // ignore: missing_return
-  String valuemanipiutor() {
+  String valueManipulator() {
+    String c = '';
     if (_value.contains('π')) {
-      String c = _value.replaceAll(RegExp(r'π'), '*3.14285714*');
-      print(c);
-      return c;
+      c = _value.replaceAll(RegExp(r'π'), '*3.14285714*');
     } else if (_value.contains('sin⁻¹')) {
-      String c = _value.replaceAll(RegExp(r'sin⁻¹'), 'arcsin');
-      print(c);
-      return c;
+      c = _value.replaceAll(RegExp(r'sin⁻¹'), 'arcsin');
     } else if (_value.contains('cos⁻¹')) {
-      String c = _value.replaceAll(RegExp(r'cos⁻¹'), 'arccos');
-      print(c);
-      return c;
+      c = _value.replaceAll(RegExp(r'cos⁻¹'), 'arccos');
     } else if (_value.contains('tan⁻¹')) {
-      String c = _value.replaceAll(RegExp(r'tan⁻¹'), 'arctan');
-      print(c);
-      return c;
+      c = _value.replaceAll(RegExp(r'tan⁻¹'), 'arctan');
     } else if (_value.contains('²')) {
-      String c = _value.replaceAll(RegExp(r'²'), '');
+      c = _value.replaceAll(RegExp(r'²'), '');
       c = '$c*$c';
-      print(c);
-      return c;
     } else
       return _value;
+
+    print(c);
+    return c;
   }
 
   void action(int int, List list) {
@@ -105,6 +106,7 @@ class _MainPageState extends State<MainPage> {
           Align(
             alignment: Alignment.centerRight,
             child: SingleChildScrollView(
+              physics: ClampingScrollPhysics(),
               reverse: true,
               scrollDirection: Axis.horizontal,
               child: Padding(

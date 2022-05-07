@@ -11,7 +11,8 @@ class BottomGrid extends StatelessWidget {
     return GridView.builder(
       padding: EdgeInsets.all(0),
       reverse: true,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4, childAspectRatio: selected ? 1.5 : 1),
+      gridDelegate:
+          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4, childAspectRatio: selected ? 2.2 : 1.5),
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
       itemCount: 20,
@@ -19,7 +20,7 @@ class BottomGrid extends StatelessWidget {
         return Button(
             text: kBottomGridText[int].toString(),
             textColor: ktextColor[int],
-            textSize: selected ? 40 : 45,
+            textSize: selected ? 28 : 35,
             callback: () {
               callback(int, kBottomGridText);
             });

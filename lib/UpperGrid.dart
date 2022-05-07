@@ -15,8 +15,6 @@ class _UpperGridState extends State<UpperGrid> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // duration: Duration(seconds: 5),
-      // curve: Curves.fastOutSlowIn,
       color: Color(0xFF32363a),
       child: widget.selected
           ? GridView.builder(
